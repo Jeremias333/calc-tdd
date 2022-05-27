@@ -1,32 +1,45 @@
-import numbers
-class Calculator():
+class Calculator(object):
     def __init__(self):
         pass
 
-    def _check_type(self, op):
-        if not isinstance(op, numbers.Number):
-            raise CalcError(f"{op} não é um número!")
+    def _check_natural(self, op):
+        if not isinstance(op, int) or op < 0:
+            raise CalcError(f"{op} não é um natural!")
 
-    def soma(self, a, b):
-        self._check_type(a)
-        self._check_type(b)
-        return a+b
+    def _check_return_sub(self, x, y):
+        if (x - y) < 0:
+            raise CalcError("valor de resposta não é natural")
+
+    def _check_return_div(self, x, y):
+        if (x % y) != 0:
+            raise CalcError("valor de resposta não é natural")
+
+    def soma(self, x, y):
+        self._check_natural(x)
+        self._check_natural(y)
+        return x + y
+
+    def sub(self, x, y):
+        self._check_natural(x)
+        self._check_natural(y)
+        self._check_return_sub(x, y)
+        return x - y
+
+    def multi(self, x, y):
+        self._check_natural(x)
+        self._check_natural(y)
+        return x * y
+
+    def div(self, x, y):
+        self._check_natural(x)
+        self._check_natural(y)
+        self._check_return_div(x, y)
+        return x / y
+
+    def pot(self, x, y):
+        self._check_natural(x)
+        self._check_natural(y)
+        return x ** y
 
 class CalcError(Exception):
     pass
-
-
-# class Calculator(object):
-#     def _check_type(self, op):
-#         if not isinstance(op, numbers.Number):
-#             raise CalcError(f"{op} não é um número!")
-
-#     def soma(self, a, b):
-#         self._check_type(a)
-#         self._check_type(b)
-#         return a + b
-
-#     def sub(self, a, b):
-#         self._check_type(a)
-#         self._check_type(b)
-#         return a - b
