@@ -12,7 +12,7 @@ class Calculator(object):
     
     def _check_is_zero(self, op):
         if op == 0:
-            raise CalcError("Divisão por zero não é possível")
+            raise DivByZero("Divisão por zero não é possível")
 
     def soma(self, x, y):
         self._check_integer(x)
@@ -36,7 +36,7 @@ class Calculator(object):
             self._check_is_zero(y)
             self._check_return_div(x, y)
             return x / y
-        except:
+        except DivByZero:
             return "Divisão por zero não é possível"
 
     def pot(self, x, y):
@@ -45,4 +45,7 @@ class Calculator(object):
         return x ** y
 
 class CalcError(Exception):
+    pass
+
+class DivByZero(Exception):
     pass
