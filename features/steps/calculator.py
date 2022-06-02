@@ -8,6 +8,7 @@ try:
             )
         )
     )
+    #esse try except é apenas para rodar no vscode.
 except:
     raise
 from behave import *
