@@ -38,7 +38,6 @@ class Calculator(object):
             return x / y
         except:
             return "Divisão por zero não é possível"
-        
 
     def pot(self, x, y):
         self._check_integer(x)
